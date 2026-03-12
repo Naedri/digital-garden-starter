@@ -30,6 +30,22 @@ export default defineConfig({
 
     footer: {
       copyright: "ISC License"
+    },
+
+    search: {
+      provider: "local",
+      options: {
+        miniSearch: {
+          /**
+           * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
+           */
+          options: {},
+          /**
+           * @type {import('minisearch').SearchOptions}
+           */
+          searchOptions: {}
+        }
+      }
     }
   }
   // lastUpdated: true
