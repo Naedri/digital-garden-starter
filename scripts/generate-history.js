@@ -37,7 +37,8 @@ const list = sorted
   .map((f) => {
     const url = "/" + f.file.replace(".md", "");
     const name = url.split("/").pop();
-    return `- [${name}](${url})`;
+    const date = f.time.toLocaleDateString("en-CA");
+    return `- [${name}](${url}) - ${date}`;
   })
   .join("\n");
 
