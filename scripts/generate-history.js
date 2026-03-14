@@ -1,0 +1,40 @@
+import fg from "fast-glob";
+import fs from "fs";
+import path from "path";
+
+const docsDir = "docs";
+const outputPath = path.join(docsDir, "generated/history.md");
+
+const files = await fg(["**/*.md"], {
+  cwd: docsDir,
+  ignore: ["generated/**", "graph.md", "index.md"]
+});
+
+const getPage = (list) => `---
+title: History
+---
+
+# {{ $frontmatter.title }}
+
+${list}
+`;
+
+const sorted = files
+  .map((file) => ({
+    file,
+    time: fs.statSync(path.join(docsDir, file)).mtime
+  }))
+  .sort((a, b) => b.time - a.time)
+  .slice(0, 10);
+
+const list = sorted
+  .map((f) => {
+    const url = "/" + f.file.replace(".md", "");
+    const name = url.split("/").pop();
+    return `- [${name}](${url})`;
+  })
+  .join("\n");
+
+const md = getPage(list);
+
+fs.writeFileSync(outputPath, md);

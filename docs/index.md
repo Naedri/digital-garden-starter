@@ -15,10 +15,16 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Tags
+    details: Browse notes by tags
+    link: /generated/tags/index
+    icon: 🏷️
+  - title: Graph
+    details: Visualize note connections
+    link: /graph
+    icon: 🕸️
+  - title: History
+    details: Track content history
+    link: /generated/history
+    icon: 🕑
 ---

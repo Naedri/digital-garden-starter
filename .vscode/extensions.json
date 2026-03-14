@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
-    "aaron-bond.better-comments"
+    "aaron-bond.better-comments",
+    "vue.volar"
   ]
 }

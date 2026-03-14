@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "🌱 Fork this seed and grow your own digital garden of ideas.",
   "private": true,
+  "type": "module",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "generate:graph": "node scripts/generate-graph",
+    "generate:history": "node scripts/generate-history",
+    "generate:tags": "node scripts/generate-tags",
+    "generate": "npm run generate:tags && npm run generate:history && npm run generate:graph",
+    "predev": "npm run generate && npm run format",
     "dev": "vitepress dev docs",
+    "prebuild": "npm run generate && npm run format",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "test": "npm run test:size && npm run test:link",
@@ -35,5 +42,10 @@
     "prettier": "^3.8.1",
     "size-limit": "^12.0.1",
     "vitepress": "^2.0.0-alpha.16"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.3",
+    "force-graph": "^1.51.1",
+    "gray-matter": "^4.0.3"
   }
 }
