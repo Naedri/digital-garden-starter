@@ -10,6 +10,7 @@
       <li>Mindmap</li>
       <li>File history</li>
       <li>Mermaid rendering</li>
+      <li>Sidebar generation</li>
     </ul>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { withSidebar } from "vitepress-sidebar";
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
@@ -13,16 +14,6 @@ const vitePressOptions = {
     nav: [
       { text: "Home", link: "/" },
       { text: "Examples", link: "/markdown-examples" }
-    ],
-
-    sidebar: [
-      {
-        text: "Examples",
-        items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" }
-        ]
-      }
     ],
 
     socialLinks: [
@@ -71,4 +62,18 @@ const vitePressOptions = {
   ]
 };
 
-export default defineConfig(vitePressOptions);
+// https://vitepress-sidebar.cdget.com/guide/options
+const vitePressSidebarOptions = {
+  // ============ [ RESOLVING PATHS ] ============
+  documentRootPath: "/docs/",
+  // ============ [ GROUPING ] ============
+  collapsed: false,
+  // ============ [ INCLUDE / EXCLUDE ] ============
+  excludeByGlobPattern: ["generated/", "graph.md"],
+  // ============ [ STYLING MENU TITLE ] ============
+  capitalizeFirst: true
+};
+
+export default defineConfig(
+  withSidebar(vitePressOptions, vitePressSidebarOptions)
+);
