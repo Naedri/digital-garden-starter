@@ -44,6 +44,7 @@
     "vitepress": "^2.0.0-alpha.16"
   },
   "dependencies": {
+    "@catppuccin/vitepress": "^0.1.2",
     "fast-glob": "^3.3.3",
     "force-graph": "^1.51.1",
     "gray-matter": "^4.0.3"

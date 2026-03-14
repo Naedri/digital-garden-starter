@@ -3,7 +3,7 @@ import { h } from "vue";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 
-import "./style.css";
+import "@catppuccin/vitepress/theme/frappe/green.css";
 
 import Graph from "./components/Graph.vue";
 
