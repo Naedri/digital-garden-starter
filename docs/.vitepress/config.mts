@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+const vitePressOptions = {
   title: "My Awesome Project",
   description: "A VitePress Site",
   lang: "en",
@@ -9,6 +9,7 @@ export default defineConfig({
   base: "/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: "/logo.svg",
     nav: [
       { text: "Home", link: "/" },
       { text: "Examples", link: "/markdown-examples" }
@@ -47,6 +48,18 @@ export default defineConfig({
         }
       }
     }
-  }
-  // lastUpdated: true
-});
+  },
+  // lastUpdated: true,
+  head: [
+    ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+    [
+      "meta",
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1.0, viewport-fit=cover"
+      }
+    ]
+  ]
+};
+
+export default defineConfig(vitePressOptions);
