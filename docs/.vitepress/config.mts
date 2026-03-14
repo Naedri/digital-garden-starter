@@ -26,7 +26,10 @@ const vitePressOptions = {
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" }
+      {
+        icon: "github",
+        link: "https://github.com/Naedri/digital-garden-starter"
+      }
     ],
 
     footer: {

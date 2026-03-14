@@ -1,5 +1,5 @@
 {
-  "name": "digital-garden-template",
+  "name": "digital-garden-starter",
   "version": "1.0.0",
   "description": "🌱 Fork this seed and grow your own digital garden of ideas.",
   "private": true,
@@ -25,18 +25,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Naedri/digital-garden-template.git"
+    "url": "git+https://github.com/Naedri/digital-garden-starter.git"
   },
   "keywords": [
     "digital-garden",
-    "template"
+    "template",
+    "starter"
   ],
   "author": "Adrien JALLAIS",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Naedri/digital-garden-template/issues"
+    "url": "https://github.com/Naedri/digital-garden-starter/issues"
   },
-  "homepage": "https://github.com/Naedri/digital-garden-template#readme",
+  "homepage": "https://github.com/Naedri/digital-garden-starter#readme",
   "devDependencies": {
     "@size-limit/file": "^12.0.1",
     "prettier": "^3.8.1",
