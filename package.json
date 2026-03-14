@@ -47,6 +47,7 @@
     "@catppuccin/vitepress": "^0.1.2",
     "fast-glob": "^3.3.3",
     "force-graph": "^1.51.1",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "vitepress-mermaid-renderer": "^1.1.18"
   }
 }

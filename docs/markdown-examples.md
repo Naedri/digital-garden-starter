@@ -2,6 +2,15 @@
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
+## Mermaid rendering
+
+Using [`vitepress-mermaid-renderer`](https://github.com/sametcn99/vitepress-mermaid-renderer), it supports mermaid rendering :
+
+```mermaid
+flowchart TD
+  Start --> Stop
+```
+
 ## Syntax Highlighting
 
 VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
