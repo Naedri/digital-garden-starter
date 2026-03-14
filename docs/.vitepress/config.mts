@@ -1,3 +1,4 @@
+import { withPwa } from "@vite-pwa/vitepress";
 import { defineConfig } from "vitepress";
 import { withSidebar } from "vitepress-sidebar";
 
@@ -80,6 +81,8 @@ const vitePressSidebarOptions = {
   useTitleFromFrontmatter: true
 };
 
-export default defineConfig(
+const config = defineConfig(
   withSidebar(vitePressOptions, vitePressSidebarOptions)
 );
+
+export default withPwa(config);
