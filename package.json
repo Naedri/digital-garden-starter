@@ -7,10 +7,14 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "test": "npm run test:size && npm run test:link",
+    "test:size": "size-limit",
+    "test:link": "lychee vitepress/**/*.md --base ./vitepress/public",
+    "format": "prettier --write .",
+    "format-check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -25,5 +29,11 @@
   "bugs": {
     "url": "https://github.com/Naedri/digital-garden-template/issues"
   },
-  "homepage": "https://github.com/Naedri/digital-garden-template#readme"
+  "homepage": "https://github.com/Naedri/digital-garden-template#readme",
+  "devDependencies": {
+    "@size-limit/file": "^12.0.1",
+    "prettier": "^3.8.1",
+    "size-limit": "^12.0.1",
+    "vitepress": "^2.0.0-alpha.16"
+  }
 }

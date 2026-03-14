@@ -1,0 +1,21 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+
+  "workbench.colorTheme": "Dracula Theme Soft",
+  "workbench.tree.enableStickyScroll": true,
+
+  "cSpell.language": "fr",
+
+  "markdownlint.config": {
+    "MD025": { "enabled": false }
+  },
+
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.editorDecoration.disableHover": false
+}
