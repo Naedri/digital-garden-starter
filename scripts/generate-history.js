@@ -26,12 +26,28 @@ ${list}
 `;
 
 const sorted = files
-  .map((file) => ({
-    file,
-    time: fs.statSync(path.join(docsDir, file)).mtime
-  }))
-  .sort((a, b) => b.time - a.time)
-  .slice(0, 10);
+  .map((file) => {
+    const filePath = path.join(docsDir, file);
+    try {
+      const { mtime } = fs.statSync(filePath);
+      const day = new Date(
+        mtime.getFullYear(),
+        mtime.getMonth(),
+        mtime.getDate()
+      );
+      return { file, time: day };
+    } catch (error) {
+      console.error("Error reading file stats:", error.message);
+      return { file, time: null };
+    }
+  })
+  .filter((res) => res.time !== null)
+  .sort((a, b) => {
+    if (b.time != a.time) return b.time - a.time;
+    else b.file - a.file;
+  });
+// last 10 files
+// .slice(0, 10);
 
 const list = sorted
   .map((f) => {
