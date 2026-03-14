@@ -13,7 +13,9 @@ const vitePressOptions = {
     logo: "/logo.svg",
     nav: [
       { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" }
+      { text: "Tags", link: "/generated/tags/index" },
+      { text: "Graph", link: "/graph" },
+      { text: "History", link: "/generated/history" }
     ],
 
     socialLinks: [
