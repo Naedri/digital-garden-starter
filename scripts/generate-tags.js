@@ -7,8 +7,9 @@ const docsDir = "docs";
 const tagsDir = path.join(docsDir, "generated/tags");
 const outputPath = path.join(tagsDir, "index.md");
 
-const files = await fg(["**/*.md", "!tags/**", "!generated/**", "!index.md"], {
-  cwd: docsDir
+const files = await fg(["**/*.md"], {
+  cwd: docsDir,
+  ignore: ["generated/**", "graph.md", "index.md", "tags/**"]
 });
 
 const getPageOneTag = (tag, pages, list) => `---
