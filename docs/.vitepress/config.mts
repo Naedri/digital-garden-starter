@@ -51,7 +51,7 @@ const vitePressOptions = {
       dark: "catppuccin-frappe"
     }
   },
-  // lastUpdated: true,
+  lastUpdated: true,
   head: [
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
     [
