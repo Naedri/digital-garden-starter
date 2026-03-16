@@ -49,7 +49,8 @@ const vitePressOptions = {
     theme: {
       light: "catppuccin-latte",
       dark: "catppuccin-frappe"
-    }
+    },
+    toc: { level: [1, 2] }
   },
   lastUpdated: true,
   head: [
@@ -74,7 +75,9 @@ const vitePressSidebarOptions = {
   // ============ [ INCLUDE / EXCLUDE ] ============
   excludeByGlobPattern: ["generated/", "graph.md"],
   // ============ [ STYLING MENU TITLE ] ============
-  capitalizeFirst: true
+  capitalizeFirst: true,
+  useFolderTitleFromIndexFile: true,
+  useTitleFromFrontmatter: true
 };
 
 export default defineConfig(
