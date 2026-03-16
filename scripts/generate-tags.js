@@ -12,7 +12,7 @@ const files = await fg(["**/*.md", "!tags/**", "!generated/**", "!index.md"], {
 });
 
 const getPageOneTag = (tag, pages, list) => `---
-title: ${tag.toUpperCase()} tag 
+title: ${tag.toUpperCase()} tag
 ---
 
 # {{ $frontmatter.title }}

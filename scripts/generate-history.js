@@ -10,6 +10,12 @@ const files = await fg(["**/*.md"], {
   ignore: ["generated/**", "graph.md", "index.md"]
 });
 
+if (files.length === 0) {
+  console.log("No files found.");
+} else {
+  console.log("Found files:", files);
+}
+
 const getPage = (list) => `---
 title: History
 ---
