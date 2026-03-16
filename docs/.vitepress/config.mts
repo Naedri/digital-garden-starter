@@ -50,7 +50,7 @@ const vitePressOptions = {
       light: "catppuccin-latte",
       dark: "catppuccin-frappe"
     },
-    toc: { level: [1, 2] }
+    toc: { level: [2, 3] }
   },
   lastUpdated: true,
   head: [
@@ -74,6 +74,7 @@ const vitePressSidebarOptions = {
   collapseDepth: 2,
   // ============ [ INCLUDE / EXCLUDE ] ============
   excludeByGlobPattern: ["generated/", "graph.md"],
+  includeFolderIndexFile: true,
   // ============ [ STYLING MENU TITLE ] ============
   capitalizeFirst: true,
   useFolderTitleFromIndexFile: true,
