@@ -70,7 +70,12 @@ for (const [tag, pages] of Object.entries(tags)) {
 
 // Page indexing tags
 const tagList = Object.entries(tags)
-  .sort((a, b) => b[1].length - a[1].length)
+  .sort((a, b) => {
+    // page number
+    if (b[1].length != a[1].length) return b[1].length - a[1].length;
+    // tag names
+    else return b[0] - a[0];
+  })
   .map(([tag, pages]) => `- [${tag}](/generated/tags/${tag}) (${pages.length})`)
   .join("\n");
 
