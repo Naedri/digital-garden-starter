@@ -69,7 +69,8 @@ const vitePressSidebarOptions = {
   // ============ [ RESOLVING PATHS ] ============
   documentRootPath: "/docs/",
   // ============ [ GROUPING ] ============
-  collapsed: false,
+  collapsed: true,
+  collapseDepth: 2,
   // ============ [ INCLUDE / EXCLUDE ] ============
   excludeByGlobPattern: ["generated/", "graph.md"],
   // ============ [ STYLING MENU TITLE ] ============
