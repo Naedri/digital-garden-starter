@@ -24,7 +24,7 @@ if (files.length === 0) {
 }
 
 const getPage = (list) => `---
-title: History
+title: Historique
 ---
 
 # {{ $frontmatter.title }}

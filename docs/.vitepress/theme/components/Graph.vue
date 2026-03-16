@@ -75,7 +75,7 @@ onUnmounted(() => window.removeEventListener("resize", handleResize));
       :class="['fullscreen-btn', 'alt', { active: isFullscreen }]"
       @click="toggleFullscreen"
     >
-      {{ isFullscreen ? "Exit" : "Full Screen" }}
+      {{ isFullscreen ? "Quitter" : "Plein écran" }}
     </button>
     <div ref="container" class="graph-container" />
   </div>

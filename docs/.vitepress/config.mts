@@ -3,9 +3,9 @@ import { withSidebar } from "vitepress-sidebar";
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
-  title: "My Awesome Project",
-  description: "A VitePress Site",
-  lang: "en",
+  title: "Mon super projet",
+  description: "Un site VitePress",
+  lang: "fr",
   cleanUrls: true,
   base: "/",
   srcExclude: [
@@ -18,10 +18,10 @@ const vitePressOptions = {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo.svg",
     nav: [
-      { text: "Home", link: "/" },
+      { text: "Accueil", link: "/" },
       { text: "Tags", link: "/_generated/tags/index" },
       { text: "Graph", link: "/graph" },
-      { text: "History", link: "/_generated/history" }
+      { text: "Historique", link: "/_generated/history" }
     ],
     socialLinks: [
       {
@@ -31,7 +31,7 @@ const vitePressOptions = {
     ],
 
     footer: {
-      copyright: "ISC License"
+      copyright: "Licence ISC"
     },
 
     search: {

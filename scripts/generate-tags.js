@@ -22,10 +22,10 @@ const files = await fg(["**/*.md"], {
 const getPageOneTag = (tag, pages, list) => `---
 title: ${tag.toUpperCase()} tag
 ---
-
+ 
 # {{ $frontmatter.title }}
 
-${pages.length} page(s) using this tag.
+${pages.length} page(s) utilisant ce tag.
 
 ${list}
 `;

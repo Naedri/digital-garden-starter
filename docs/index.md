@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "Mon super projet"
+  text: "Un site VitePress"
+  tagline: Le slogan de mon super projet
   image:
     src: /logo.svg
     alt: Logo
@@ -19,15 +19,15 @@ hero:
 
 features:
   - title: Tags
-    details: Browse notes by tags
+    details: Parcourir les tags des notes
     link: /generated/tags/index
     icon: 🏷️
   - title: Graph
-    details: Visualize note connections
+    details: Visualiser les connections entre les notes
     link: /graph
     icon: 🕸️
-  - title: History
-    details: Track content history
+  - title: Historique
+    details: Parcourir l'historique
     link: /generated/history
     icon: 🕑
 ---
