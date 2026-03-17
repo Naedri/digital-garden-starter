@@ -7,7 +7,13 @@ const outputPath = path.join(docsDir, "generated/history.md");
 
 const files = await fg(["**/*.md"], {
   cwd: docsDir,
-  ignore: ["generated/**", "graph.md", "index.md"]
+  ignore: [
+    "generated/**",
+    "graph.md",
+    "index.md",
+    ".obsidian/**",
+    "templates/**"
+  ]
 });
 
 if (files.length === 0) {

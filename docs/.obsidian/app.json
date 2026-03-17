@@ -1,0 +1,12 @@
+{
+  "newLinkFormat": "relative",
+  "attachmentFolderPath": "./attachments",
+  "newFileLocation": "root",
+  "useMarkdownLinks": true,
+  "userIgnoreFilters": [
+    ".vitepress/",
+    "templates/"
+  ],
+  "newFileFolderPath": "/",
+  "alwaysUpdateLinks": true
+}

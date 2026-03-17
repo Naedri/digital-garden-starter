@@ -9,7 +9,14 @@ const outputPath = path.join(tagsDir, "index.md");
 
 const files = await fg(["**/*.md"], {
   cwd: docsDir,
-  ignore: ["generated/**", "graph.md", "index.md", "tags/**"]
+  ignore: [
+    "generated/**",
+    "graph.md",
+    "index.md",
+    "tags/**",
+    ".obsidian/**",
+    "templates/**"
+  ]
 });
 
 const getPageOneTag = (tag, pages, list) => `---

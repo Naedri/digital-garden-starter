@@ -7,7 +7,13 @@ const outputPath = path.join(docsDir, "public/graph.json");
 
 const files = await fg(["**/*.md"], {
   cwd: docsDir,
-  ignore: ["generated/**", "graph.md", "index.md"]
+  ignore: [
+    "generated/**",
+    "graph.md",
+    "index.md",
+    ".obsidian/**",
+    "templates/**"
+  ]
 });
 
 const nodes = [];
