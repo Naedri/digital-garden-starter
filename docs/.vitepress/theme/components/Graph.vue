@@ -7,6 +7,17 @@ const isFullscreen = ref(false);
 let graphInstance = null;
 const zoomDuration = 400;
 
+// Reactive theme tracking
+const isDark = ref(document.documentElement.classList.contains("dark"));
+
+// Link color function based on theme
+const getLinkColor = () =>
+  isDark.value
+    ? "rgba(255,255,255,0.35)" // dark mode
+    : "rgba(0,0,0,0.25)"; // light mode
+
+let observer = null;
+
 /**
  * Function to calculate available dimensions
  * {@link https://github.com/vuejs/vitepress/blob/8aa6ccbe32655f76c390d15568f69f83d079385d/src/node/markdown/markdown.ts#L16 688}
@@ -24,6 +35,7 @@ const getDimensions = () => {
   };
 };
 
+// Resize handler
 const handleResize = () => {
   if (graphInstance) {
     const { width, height } = getDimensions();
@@ -32,6 +44,7 @@ const handleResize = () => {
   }
 };
 
+// Fullscreen toggle
 const toggleFullscreen = async () => {
   isFullscreen.value = !isFullscreen.value;
   await nextTick();
@@ -39,6 +52,7 @@ const toggleFullscreen = async () => {
 };
 
 onMounted(async () => {
+  // ForceGraph import
   const ForceGraph = (await import("force-graph")).default;
 
   try {
@@ -48,6 +62,7 @@ onMounted(async () => {
     const data = await res.json();
     const { width, height } = getDimensions();
 
+    // Initialize graph
     graphInstance = ForceGraph()(container.value)
       .graphData(data)
       .width(width)
@@ -55,18 +70,37 @@ onMounted(async () => {
       .nodeId("id")
       .nodeLabel("label")
       .nodeAutoColorBy("group")
+      .linkColor(getLinkColor)
+      .linkWidth(1.5)
+      .linkOpacity(0.6)
       .linkDirectionalParticles(1)
       .cooldownTicks(40)
       .onNodeClick((node) => (window.location.href = withBase("/" + node.id)));
 
+    // Zoom to fit after engine stops
     graphInstance.onEngineStop(() => graphInstance.zoomToFit(600, 40));
+
+    // Window resize listener
     window.addEventListener("resize", handleResize);
+
+    // Observe dark mode changes
+    observer = new MutationObserver(() => {
+      isDark.value = document.documentElement.classList.contains("dark");
+      if (graphInstance) graphInstance.linkColor(getLinkColor);
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
   } catch (err) {
     console.error("Graph initialization failed:", err);
   }
 });
 
-onUnmounted(() => window.removeEventListener("resize", handleResize));
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+  observer?.disconnect();
+});
 </script>
 
 <template>
