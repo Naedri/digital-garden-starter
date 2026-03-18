@@ -4,13 +4,13 @@ import matter from "gray-matter";
 import path from "path";
 
 const docsDir = "docs";
-const tagsDir = path.join(docsDir, "generated/tags");
+const tagsDir = path.join(docsDir, "_generated/tags");
 const outputPath = path.join(tagsDir, "index.md");
 
 const files = await fg(["**/*.md"], {
   cwd: docsDir,
   ignore: [
-    "generated/**",
+    "_generated/**",
     "graph.md",
     "index.md",
     "tags/**",
@@ -83,11 +83,13 @@ const tagList = Object.entries(tags)
     // tag names
     else return b[0] - a[0];
   })
-  .map(([tag, pages]) => `- [${tag}](/generated/tags/${tag}) (${pages.length})`)
+  .map(
+    ([tag, pages]) => `- [${tag}](/_generated/tags/${tag}) (${pages.length})`
+  )
   .join("\n");
 
 const index = getPageIndexTag(tagList);
 
 fs.writeFileSync(outputPath, index);
 
-console.log("Tags generated :", Object.keys(tags));
+console.log("Tags _generated :", Object.keys(tags));

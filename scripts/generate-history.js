@@ -3,12 +3,12 @@ import fs from "fs";
 import path from "path";
 
 const docsDir = "docs";
-const outputPath = path.join(docsDir, "generated/history.md");
+const outputPath = path.join(docsDir, "_generated/history.md");
 
 const files = await fg(["**/*.md"], {
   cwd: docsDir,
   ignore: [
-    "generated/**",
+    "_generated/**",
     "graph.md",
     "index.md",
     ".obsidian/**",

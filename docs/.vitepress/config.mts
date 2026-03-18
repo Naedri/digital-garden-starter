@@ -14,9 +14,9 @@ const vitePressOptions = {
     logo: "/logo.svg",
     nav: [
       { text: "Home", link: "/" },
-      { text: "Tags", link: "/generated/tags/index" },
+      { text: "Tags", link: "/_generated/tags/index" },
       { text: "Graph", link: "/graph" },
-      { text: "History", link: "/generated/history" }
+      { text: "History", link: "/_generated/history" }
     ],
 
     socialLinks: [
@@ -74,7 +74,7 @@ const vitePressSidebarOptions = {
   collapsed: true,
   collapseDepth: 2,
   // ============ [ INCLUDE / EXCLUDE ] ============
-  excludeByGlobPattern: ["generated/", "graph.md", ".obsidian/", "templates/"],
+  excludeByGlobPattern: ["_generated/", "graph.md", ".obsidian/", "templates/"],
   includeFolderIndexFile: true,
   // ============ [ STYLING MENU TITLE ] ============
   capitalizeFirst: true,

@@ -4,8 +4,8 @@ docs/.vitepress/dist
 /public
 
 # Generated
-docs/generated
-docs/generated/tag
+docs/_generated
+docs/_generated/tag
 docs/public/graph.json
 
 # Node dependencies

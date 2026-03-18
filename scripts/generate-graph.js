@@ -8,7 +8,7 @@ const outputPath = path.join(docsDir, "public/graph.json");
 const files = await fg(["**/*.md"], {
   cwd: docsDir,
   ignore: [
-    "generated/**",
+    "_generated/**",
     "graph.md",
     "index.md",
     ".obsidian/**",
@@ -68,4 +68,4 @@ const graph = {
 
 fs.writeFileSync(outputPath, JSON.stringify(graph, null, 2));
 
-console.log(`Graph generated: ${nodes.length} nodes, ${links.length} links`);
+console.log(`Graph _generated: ${nodes.length} nodes, ${links.length} links`);
