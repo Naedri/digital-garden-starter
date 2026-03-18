@@ -14,5 +14,5 @@ node_modules
 # Obsidian
 docs/.obsidian/*
 !docs/.obsidian/
-!docs/.obsidian/templates.json
+!docs/.obsidian/_templates.json
 !docs/.obsidian/app.json

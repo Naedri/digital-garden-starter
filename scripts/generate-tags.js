@@ -15,7 +15,7 @@ const files = await fg(["**/*.md"], {
     "index.md",
     "tags/**",
     ".obsidian/**",
-    "templates/**"
+    "_templates/**"
   ]
 });
 

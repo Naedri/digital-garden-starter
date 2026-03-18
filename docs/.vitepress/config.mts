@@ -8,7 +8,7 @@ const vitePressOptions = {
   lang: "en",
   cleanUrls: true,
   base: "/",
-  srcExclude: ["templates/**", ".obsidian/**"],
+  srcExclude: ["_templates/**", ".obsidian/**"],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo.svg",
@@ -74,7 +74,12 @@ const vitePressSidebarOptions = {
   collapsed: true,
   collapseDepth: 2,
   // ============ [ INCLUDE / EXCLUDE ] ============
-  excludeByGlobPattern: ["_generated/", "graph.md", ".obsidian/", "templates/"],
+  excludeByGlobPattern: [
+    "_generated/",
+    "graph.md",
+    ".obsidian/",
+    "_templates/"
+  ],
   includeFolderIndexFile: true,
   // ============ [ STYLING MENU TITLE ] ============
   capitalizeFirst: true,
