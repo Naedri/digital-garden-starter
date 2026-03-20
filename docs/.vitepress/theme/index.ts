@@ -16,7 +16,10 @@ export default {
 
     const initMermaid = () => {
       const mermaidRenderer = createMermaidRenderer({
-        theme: isDark.value ? "dark" : "forest"
+        theme: isDark.value ? "dark" : "forest",
+        gantt: {
+          axisFormat: "fr-FR"
+        }
       });
       mermaidRenderer.setToolbar({
         showLanguageLabel: false,
