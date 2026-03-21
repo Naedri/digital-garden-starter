@@ -55,7 +55,14 @@ const vitePressOptions = {
       light: "catppuccin-latte",
       dark: "catppuccin-frappe"
     },
-    toc: { level: [2, 3] }
+    toc: { level: [2, 3] },
+    container: {
+      tipLabel: "ASTUCE",
+      warningLabel: "ATTENTION",
+      dangerLabel: "DANGER",
+      infoLabel: "INFO",
+      detailsLabel: "Détails"
+    }
   },
   lastUpdated: true,
   head: [
