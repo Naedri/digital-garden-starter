@@ -12,12 +12,7 @@
       <li>File history</li>
       <li>Mermaid rendering</li>
       <li>Sidebar generation</li>
-      <li>
-        Obsidian compatibility on
-        <a href="https://github.com/Naedri/digital-garden-starter/tree/feat/obsidian">
-          feat/obsidian
-        </a>
-      </li>
+      <li>Obsidian compatibility when open from `docs`</li>
       <li>
         French version on
         <a href="https://github.com/Naedri/digital-garden-starter/tree/feat/french">
