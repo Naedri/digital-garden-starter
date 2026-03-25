@@ -19,8 +19,17 @@ export default {
         theme: isDark.value ? "dark" : "forest"
       });
       mermaidRenderer.setToolbar({
-        showLanguageLabel: true,
-        fullscreenMode: "browser"
+        showLanguageLabel: false,
+        desktop: {
+          zoomLevel: "disabled"
+        },
+        mobile: {
+          zoomLevel: "disabled",
+          zoomIn: "disabled",
+          zoomOut: "disabled",
+          copyCode: "disabled",
+          positions: { vertical: "bottom", horizontal: "right" }
+        }
       });
     };
 

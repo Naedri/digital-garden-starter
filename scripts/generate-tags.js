@@ -11,11 +11,11 @@ const files = await fg(["**/*.md"], {
   cwd: docsDir,
   ignore: [
     "_generated/**",
+    "_templates/**",
+    ".obsidian/**",
     "graph.md",
     "index.md",
-    "tags/**",
-    ".obsidian/**",
-    "_templates/**"
+    "tags/**"
   ]
 });
 

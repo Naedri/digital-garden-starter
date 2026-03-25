@@ -8,7 +8,12 @@ const vitePressOptions = {
   lang: "en",
   cleanUrls: true,
   base: "/",
-  srcExclude: ["_templates/**", ".obsidian/**"],
+  srcExclude: [
+    //
+    "_guidelines/**",
+    "_templates/**",
+    ".obsidian/**"
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo.svg",
@@ -18,7 +23,6 @@ const vitePressOptions = {
       { text: "Graph", link: "/graph" },
       { text: "History", link: "/_generated/history" }
     ],
-
     socialLinks: [
       {
         icon: "github",
@@ -76,11 +80,12 @@ const vitePressSidebarOptions = {
   // ============ [ INCLUDE / EXCLUDE ] ============
   excludeByGlobPattern: [
     "_generated/",
-    "graph.md",
+    "_guidelines/",
+    "_templates/",
     ".obsidian/",
-    "_templates/"
+    "graph.md"
   ],
-  includeFolderIndexFile: true,
+  includeFolderIndexFile: false,
   // ============ [ STYLING MENU TITLE ] ============
   capitalizeFirst: true,
   useFolderTitleFromIndexFile: true,
