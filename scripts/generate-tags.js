@@ -75,19 +75,53 @@ for (const [tag, pages] of Object.entries(tags)) {
   fs.writeFileSync(path.join(tagsDir, `${tag}.md`), md);
 }
 
-// Page indexing tags
-const tagList = Object.entries(tags)
-  .sort((a, b) => {
-    // page number
-    if (b[1].length != a[1].length) return b[1].length - a[1].length;
-    // tag names
-    else return b[0] - a[0];
-  })
+// Page indexing tags (alphabetical grouping)
+
+const groups = {
+  "0-9": [],
+  "A-F": [],
+  "G-K": [],
+  "L-P": [],
+  "Q-U": [],
+  "V-Z": []
+};
+
+function getGroup(tag) {
+  const first = tag[0].toUpperCase();
+
+  if (/[0-9]/.test(first)) return "0-9";
+  if (first >= "A" && first <= "F") return "A-F";
+  if (first >= "G" && first <= "K") return "G-K";
+  if (first >= "L" && first <= "P") return "L-P";
+  if (first >= "Q" && first <= "U") return "Q-U";
+  return "V-Z";
+}
+
+// alphabetical sort
+const sortedTags = Object.entries(tags).sort((a, b) =>
+  a[0].localeCompare(b[0], undefined, { sensitivity: "base" })
+);
+
+// distribute tags into groups
+for (const [tag, pages] of sortedTags) {
+  const group = getGroup(tag);
+
+  groups[group].push(`- [${tag}](/_generated/tags/${tag}) (${pages.length})`);
+}
+
+// build grouped markdown containers
+const tagList = Object.entries(groups)
+  .filter(([, list]) => list.length > 0)
   .map(
-    ([tag, pages]) => `- [${tag}](/_generated/tags/${tag}) (${pages.length})`
+    ([range, list]) => `
+:::details ${range} (${list.length})
+${list.join("\n")}
+:::
+`
   )
   .join("\n");
 
+// generate index page
 const index = getPageIndexTag(tagList);
 
 fs.writeFileSync(outputPath, index);
