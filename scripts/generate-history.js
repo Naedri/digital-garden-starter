@@ -43,8 +43,6 @@ const getGitLastModifiedDate = (filePath) => {
     if (!result) return null;
 
     const d = new Date(result);
-
-    // normalize to day precision
     return new Date(d.getFullYear(), d.getMonth(), d.getDate());
   } catch (e) {
     console.error(`Git error for ${filePath}:`, e.message);
@@ -52,6 +50,21 @@ const getGitLastModifiedDate = (filePath) => {
   }
 };
 
+// ISO week group
+const getWeekGroup = (date) => {
+  const d = new Date(date);
+
+  // ISO week correction (Monday-based)
+  d.setDate(d.getDate() + 4 - (d.getDay() || 7));
+
+  const yearStart = new Date(d.getFullYear(), 0, 1);
+
+  const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+
+  return `${d.getFullYear()} - W${String(weekNo).padStart(2, "0")}`;
+};
+
+// Markdown wrapper
 const getPage = (list) => `---
 title: History
 ---
@@ -61,29 +74,48 @@ title: History
 ${list}
 `;
 
+// Build file list with git dates
 const sorted = files
   .map((file) => {
     const filePath = path.join(docsDir, file);
     const time = getGitLastModifiedDate(filePath);
     return { file, time };
   })
-  .filter((res) => res.time !== null)
-  .sort((a, b) => {
-    let res;
-    if (b.time.getTime() !== a.time.getTime()) res = b.time - a.time;
-    else res = a.file.localeCompare(b.file);
-    return res;
-  });
+  .filter((x) => x.time !== null)
+  // newest first
+  .sort((a, b) => b.time - a.time);
 // last 10 files
 // .slice(0, 10);
 
-const list = sorted
-  .map((f) => {
-    const url = "/" + f.file.replace(".md", "");
-    const name = url.split("/").pop();
-    const date = f.time.toLocaleDateString("en-CA");
-    return `- [${name}](${url}) - ${date}`;
-  })
+// Group by week
+const groups = sorted.reduce((acc, f) => {
+  const group = getWeekGroup(f.time);
+
+  const url = "/" + f.file.replace(".md", "");
+  const name = url.split("/").pop();
+  const date = f.time.toLocaleDateString("en-CA");
+
+  const entry = `- [${name}](${url}) - ${date}`;
+
+  if (!acc[group]) acc[group] = [];
+  acc[group].push(entry);
+
+  return acc;
+}, {});
+
+// Sort groups
+const list = Object.entries(groups)
+  // key trick: reverse lexicographic order (LATEST WEEK FIRST)
+  .sort(([a], [b]) => b.localeCompare(a))
+  .map(
+    ([range, items]) => `
+:::details ${range} (${items.length})
+
+${items.join("\n")}
+
+:::
+`
+  )
   .join("\n");
 
 const md = getPage(list);
