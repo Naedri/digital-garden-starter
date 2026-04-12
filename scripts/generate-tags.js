@@ -94,7 +94,8 @@ function getGroup(tag) {
   if (first >= "G" && first <= "K") return "G-K";
   if (first >= "L" && first <= "P") return "L-P";
   if (first >= "Q" && first <= "U") return "Q-U";
-  return "V-Z";
+  if (first >= "V" && first <= "Z") return "V-Z";
+  return "Other";
 }
 
 // alphabetical sort
@@ -126,4 +127,4 @@ const index = getPageIndexTag(tagList);
 
 fs.writeFileSync(outputPath, index);
 
-console.log("Tags _generated :", Object.keys(tags));
+console.log("Tags generated :", Object.keys(tags));

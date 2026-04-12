@@ -69,4 +69,4 @@ const graph = {
 
 fs.writeFileSync(outputPath, JSON.stringify(graph, null, 2));
 
-console.log(`Graph _generated: ${nodes.length} nodes, ${links.length} links`);
+console.log(`Graph generated: ${nodes.length} nodes, ${links.length} links`);
