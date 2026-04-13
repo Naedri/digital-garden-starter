@@ -4,7 +4,8 @@ docs/.vitepress/dist
 /public
 
 # Generated
-docs/_generated
+docs/_generated/*
+!docs/_generated/history.md
 docs/_generated/tag
 docs/public/graph.json
 
