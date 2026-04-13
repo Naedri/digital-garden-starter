@@ -108,8 +108,7 @@ const list = Object.entries(groups)
   // key trick: reverse lexicographic order (LATEST WEEK FIRST)
   .sort(([a], [b]) => b.localeCompare(a))
   .map(
-    ([range, items]) => `
-:::details ${range} (${items.length})
+    ([range, items]) => `:::details ${range} (${items.length})
 
 ${items.join("\n")}
 
