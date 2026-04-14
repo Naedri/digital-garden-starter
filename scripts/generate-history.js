@@ -14,7 +14,7 @@ const files = await fg(["**/*.md"], {
     "_templates/**",
     ".obsidian/**",
     "graph.md",
-    "index.md"
+    "**/index.md"
   ]
 });
 
@@ -74,8 +74,12 @@ title: History
 ${list}
 `;
 
+const filteredFiles = files.filter(
+  (file) => path.basename(file) !== "index.md"
+);
+
 // Build file list with git dates
-const sorted = files
+const sorted = filteredFiles
   .map((file) => {
     const filePath = path.join(docsDir, file);
     const time = getGitLastModifiedDate(filePath);
