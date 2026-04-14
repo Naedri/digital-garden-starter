@@ -6,12 +6,14 @@ title: History
 
 :::details 2026 - W12 (1)
 
-- [markdown-examples](/markdown-examples) - 2026-03-16
+- 2026-03-16
+  - [markdown-examples](/markdown-examples)
 
 :::
 
 :::details 2026 - W11 (1)
 
-- [api-examples](/api-examples) - 2026-03-14
+- 2026-03-14
+  - [api-examples](/api-examples)
 
 :::
