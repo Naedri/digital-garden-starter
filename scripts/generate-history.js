@@ -87,7 +87,7 @@ const sorted = files
 // last 10 files
 // .slice(0, 10);
 
-// Group by week
+// Group by week (store structured data)
 const groups = sorted.reduce((acc, f) => {
   const group = getWeekGroup(f.time);
 
@@ -95,27 +95,29 @@ const groups = sorted.reduce((acc, f) => {
   const name = url.split("/").pop();
   const date = f.time.toLocaleDateString("en-CA");
 
-  const entry = `- [${name}](${url}) - ${date}`;
-
   if (!acc[group]) acc[group] = [];
-  acc[group].push(entry);
+  acc[group].push({ name, url, date });
 
   return acc;
 }, {});
 
-// Sort groups
+// Sort groups and items
 const list = Object.entries(groups)
-  // key trick: reverse lexicographic order (LATEST WEEK FIRST)
+  // latest week first
   .sort(([a], [b]) => b.localeCompare(a))
-  .map(
-    ([range, items]) => `:::details ${range} (${items.length})
+  .map(([range, items]) => {
+    const sortedItems = items
+      // alphabetical order inside each group
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(({ name, url, date }) => `- [${name}](${url}) - ${date}`);
 
-${items.join("\n")}
+    return `:::details ${range} (${items.length})
 
-:::
-`
-  )
-  .join("\n");
+${sortedItems.join("\n")}
+
+:::`;
+  })
+  .join("\n\n");
 
 const md = getPage(list);
 
