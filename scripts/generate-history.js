@@ -119,6 +119,9 @@ ${items.join("\n")}
 
 const md = getPage(list);
 
+// Ensure output directory exists
+fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+
 fs.writeFileSync(outputPath, md);
 
 console.log(`History generated at ${outputPath}`);

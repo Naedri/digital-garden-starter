@@ -67,6 +67,9 @@ const graph = {
   links
 };
 
+// Ensure output directory exists
+fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+
 fs.writeFileSync(outputPath, JSON.stringify(graph, null, 2));
 
 console.log(`Graph generated: ${nodes.length} nodes, ${links.length} links`);

@@ -125,6 +125,9 @@ ${list.join("\n")}
 // generate index page
 const index = getPageIndexTag(tagList);
 
+// Ensure output directory exists
+fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+
 fs.writeFileSync(outputPath, index);
 
 console.log("Tags generated :", Object.keys(tags));
