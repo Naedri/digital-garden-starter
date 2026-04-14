@@ -106,14 +106,29 @@ const list = Object.entries(groups)
   // latest week first
   .sort(([a], [b]) => b.localeCompare(a))
   .map(([range, items]) => {
-    const sortedItems = items
-      // alphabetical order inside each group
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map(({ name, url, date }) => `- [${name}](${url}) - ${date}`);
+    // 1. Group items by day
+    const byDay = items.reduce((acc, item) => {
+      if (!acc[item.date]) acc[item.date] = [];
+      acc[item.date].push(item);
+      return acc;
+    }, {});
+
+    // 2. Sort days (latest first)
+    const sortedDays = Object.entries(byDay)
+      .sort(([a], [b]) => b.localeCompare(a))
+      .map(([date, dayItems]) => {
+        // 3. Sort items alphabetically within the day
+        const sortedItems = dayItems
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(({ name, url }) => `  - [${name}](${url})`);
+
+        // 4. Parent bullet (date)
+        return `- ${date}\n${sortedItems.join("\n")}`;
+      });
 
     return `:::details ${range} (${items.length})
 
-${sortedItems.join("\n")}
+${sortedDays.join("\n")}
 
 :::`;
   })
