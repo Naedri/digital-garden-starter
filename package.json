@@ -39,10 +39,10 @@
   },
   "homepage": "https://github.com/Naedri/digital-garden-starter#readme",
   "devDependencies": {
-    "@size-limit/file": "^12.0.1",
-    "prettier": "^3.8.1",
+    "@size-limit/file": "^12.1.0",
+    "prettier": "^3.8.3",
     "size-limit": "^12.0.1",
-    "vitepress": "^2.0.0-alpha.16",
+    "vitepress": "^2.0.0-alpha.17",
     "vitepress-sidebar": "^1.33.1"
   },
   "dependencies": {
